@@ -22,3 +22,8 @@ export function median(items:number[]): number {
 		return (a + b) / 2;
 	}
 }
+
+// ParseFloats
+export function parseFloats(numberAsStrings:string[]):number[] {
+  return numberAsStrings.map(n => parseFloat(n));
+}

@@ -11,9 +11,9 @@ class Vector {
 
   static randomUnitVector():Vector {
     while (1) {
-      const x = Math.random() * 2 - 1
-      const y = Math.random() * 2 - 1
-      const z = Math.random() * 2 - 1
+      const x = Math.random() * 2 - 1;
+      const y = Math.random() * 2 - 1;
+      const z = Math.random() * 2 - 1;
 
       if (x * x + y * y + z * z > 1) {
         continue
@@ -59,7 +59,14 @@ class Vector {
 
   // Normalize
   normalize():Vector {
-    const d = this.length()
+    const d = this.length();
+
+    if (d === 0) {
+      console.warn(`Length is 0, returning zero vector`);
+
+      return new Vector(0, 0, 0);
+    }
+
     return new Vector(this.x / d, this.y / d, this.z / d);
   }
 
@@ -85,6 +92,10 @@ class Vector {
 
   // Div
   div(v:Vector):Vector {
+    if (v.x === 0 || v.y === 0 || v.z === 0) {
+      console.warn(`Dividing by zero, vector: ${ v }`)
+    }
+
     return new Vector(this.x / v.x, this.y / v.y, this.z / v.z);
   }
 
@@ -105,6 +116,10 @@ class Vector {
 
   // DivScalar
   divScalar(n:number):Vector {
+    if (n === 0) {
+      console.warn(`Dividing by zero, n: ${ n }`);
+    }
+
     return new Vector(this.x / n, this.y / n, this.z / n);
   }
 
@@ -139,24 +154,29 @@ class Vector {
   }
 
   // SegmentDistance
-  segmentDistance(v:Vector, w:Vector):number {
-    const l2 = v.distanceSquared(w)
+  // Shortest distance and between "this" vector and p1-p2 line
+  segmentDistance(p1:Vector, p2:Vector):number {
+    const l2 = p1.distanceSquared(p2);
 
     if (l2 === 0) {
-      return this.distance(v)
+      return this.distance(p1);
     }
 
-    const t = this.sub(v).dot(w.sub(v)) / l2
+    const t = this.sub(p1).dot(p2.sub(p1)) / l2;
 
     if (t < 0) {
-      return this.distance(v)
+      return this.distance(p1);
     }
 
     if (t > 1) {
-      return this.distance(w)
+      return this.distance(p2);
     }
 
-    return v.add(w.sub(v).mulScalar(t)).distance(this);
+    return p1.add(p2.sub(p1).mulScalar(t)).distance(this);
+  }
+
+  toString() {
+    return `Vector(${ this.x }, ${ this.y }, ${ this.z })`;
   }
 }
 
