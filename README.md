@@ -30,23 +30,23 @@ npm test -- --watch
 ## Progress
 
 * [x] axis.go
-* [ ] box.go
+* [ ] box.go - **WIP**, depends on the missing class `Triangle`
 * [x] common.go
 * [ ] cone.go
 * [ ] csg.go
-* [ ] cube.go
+* [x] cube.go - depends on the missing class `Path`
 * [ ] cylinder.go
 * [ ] filter.go
 * [ ] function.go
-* [ ] hit.go
+* [x] hit.go
 * [ ] matrix.go
 * [ ] mesh.go
 * [ ] obj.go
 * [ ] path.go
 * [ ] plane.go
-* [ ] ray.go
+* [x] ray.go
 * [ ] scene.go
-* [ ] shape.go
+* [x] shape.go - depends on the missing classes `Matrix` and `Path`
 * [ ] sphere.go
 * [ ] stl.go
 * [ ] tree.go
