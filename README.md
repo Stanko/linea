@@ -26,6 +26,26 @@ To run tests in watch mode run:
 npm test -- --watch
 ```
 
+## How to run the "cube" example
+
+Run
+
+```
+npm run cube
+```
+
+This will compile the example to `./dist/cube.js`. 
+Now run:
+
+```
+node ./dist/cube.js
+```
+
+It will render SVG code in the terminal. To save it to file, just use 
+
+```
+node ./dist/cube.js > cube.svg
+```
 
 ## Progress
 
