@@ -34,9 +34,9 @@ npm test -- --watch
 * [x] common.go
 * [ ] cone.go
 * [ ] csg.go
-* [x] cube.go - depends on the missing class `Path`
+* [x] cube.go
 * [ ] cylinder.go
-* [ ] filter.go
+* [x] filter.go
 * [ ] function.go
 * [x] hit.go
 * [x] matrix.go
