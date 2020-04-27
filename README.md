@@ -39,14 +39,14 @@ npm test -- --watch
 * [ ] filter.go
 * [ ] function.go
 * [x] hit.go
-* [ ] matrix.go
+* [x] matrix.go
 * [ ] mesh.go
 * [ ] obj.go
 * [ ] path.go
 * [ ] plane.go
 * [x] ray.go
 * [ ] scene.go
-* [x] shape.go - depends on the missing classes `Matrix` and `Path`
+* [x] shape.go - depends on the missing class `Path`
 * [ ] sphere.go
 * [ ] stl.go
 * [ ] tree.go
