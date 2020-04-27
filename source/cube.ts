@@ -2,7 +2,7 @@ import Vector from "./vector";
 import Ray from "./ray";
 import Hit, { noHit } from "./hit";
 import Box from "./box";
-import { Paths } from "./path";
+import Path, { Paths } from "./path";
 import Shape from "./shape";
 
 class Cube implements Shape {
@@ -75,20 +75,20 @@ class Cube implements Shape {
     const y2 = this.max.y;
     const z2 = this.max.z;
 
-    const paths:Paths = [
-      [[x1, y1, z1], [x1, y1, z2]],
-      [[x1, y1, z1], [x1, y2, z1]],
-      [[x1, y1, z1], [x2, y1, z1]],
-      [[x1, y1, z2], [x1, y2, z2]],
-      [[x1, y1, z2], [x2, y1, z2]],
-      [[x1, y2, z1], [x1, y2, z2]],
-      [[x1, y2, z1], [x2, y2, z1]],
-      [[x1, y2, z2], [x2, y2, z2]],
-      [[x2, y1, z1], [x2, y1, z2]],
-      [[x2, y1, z1], [x2, y2, z1]],
-      [[x2, y1, z2], [x2, y2, z2]],
-      [[x2, y2, z1], [x2, y2, z2]],
-    ];
+    const paths:Paths = new Paths([
+      new Path([new Vector(x1, y1, z1), new Vector(x1, y1, z2)]),
+      new Path([new Vector(x1, y1, z1), new Vector(x1, y2, z1)]),
+      new Path([new Vector(x1, y1, z1), new Vector(x2, y1, z1)]),
+      new Path([new Vector(x1, y1, z2), new Vector(x1, y2, z2)]),
+      new Path([new Vector(x1, y1, z2), new Vector(x2, y1, z2)]),
+      new Path([new Vector(x1, y2, z1), new Vector(x1, y2, z2)]),
+      new Path([new Vector(x1, y2, z1), new Vector(x2, y2, z1)]),
+      new Path([new Vector(x1, y2, z2), new Vector(x2, y2, z2)]),
+      new Path([new Vector(x2, y1, z1), new Vector(x2, y1, z2)]),
+      new Path([new Vector(x2, y1, z1), new Vector(x2, y2, z1)]),
+      new Path([new Vector(x2, y1, z2), new Vector(x2, y2, z2)]),
+      new Path([new Vector(x2, y2, z1), new Vector(x2, y2, z2)]),
+    ]);
     return paths;
 
     // TODO this is the original unused code

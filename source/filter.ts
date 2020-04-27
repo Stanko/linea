@@ -1,6 +1,6 @@
 import Vector from "./vector";
-import Scene from "./scene";
 import Box from "./box";
+import Scene from "./scene";
 import Matrix from "./matrix";
 
 

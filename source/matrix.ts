@@ -1,6 +1,6 @@
 import Vector from "./vector";
 import Ray from "./ray";
-// import Box from "./box";
+import Box from "./box";
 
 export const matrixBase = {
   // Identity
@@ -241,34 +241,33 @@ class Matrix {
     return new Ray(this.mulPosition(b.origin), this.mulDirection(b.direction));
   }
 
-  // TODO uncomment when "Box" is ported
   // MulBox
-  // mulBox(box:Box):Box {
-  //   // http://dev.theomader.com/transform-bounding-boxes/
-  //   const r = new Vector(this.x00, this.x10, this.x20);
-  //   const u = new Vector(this.x01, this.x11, this.x21);
-  //   const b = new Vector(this.x02, this.x12, this.x22);
-  //   const t = new Vector(this.x03, this.x13, this.x23);
+  mulBox(box:Box):Box {
+    // http://dev.theomader.com/transform-bounding-boxes/
+    const r = new Vector(this.x00, this.x10, this.x20);
+    const u = new Vector(this.x01, this.x11, this.x21);
+    const b = new Vector(this.x02, this.x12, this.x22);
+    const t = new Vector(this.x03, this.x13, this.x23);
 
-  //   let xa = r.mulScalar(box.min.x);
-  //   let xb = r.mulScalar(box.max.x);
-  //   let ya = u.mulScalar(box.min.y);
-  //   let yb = u.mulScalar(box.max.y);
-  //   let za = b.mulScalar(box.min.z);
-  //   let zb = b.mulScalar(box.max.z);
+    let xa = r.mulScalar(box.min.x);
+    let xb = r.mulScalar(box.max.x);
+    let ya = u.mulScalar(box.min.y);
+    let yb = u.mulScalar(box.max.y);
+    let za = b.mulScalar(box.min.z);
+    let zb = b.mulScalar(box.max.z);
 
-  //   xa = xa.min(xb);
-  //   xb = xa.max(xb);
-  //   ya = ya.min(yb);
-  //   yb = ya.max(yb);
-  //   za = za.min(zb);
-  //   zb = za.max(zb);
+    xa = xa.min(xb);
+    xb = xa.max(xb);
+    ya = ya.min(yb);
+    yb = ya.max(yb);
+    za = za.min(zb);
+    zb = za.max(zb);
 
-  //   const min = xa.add(ya).add(za).add(t);
-  //   const max = xb.add(yb).add(zb).add(t);
+    const min = xa.add(ya).add(za).add(t);
+    const max = xb.add(yb).add(zb).add(t);
 
-  //   return new Box(min, max);
-  // }
+    return new Box(min, max);
+  }
 
   // Transpose
   transpose():Matrix {

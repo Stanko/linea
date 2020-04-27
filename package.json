@@ -4,7 +4,8 @@
   "description": "This is an attempt to port [Michael Fogleman's ln](https://github.com/fogleman/ln), 3d line engine to JavaScript (well, TypeScript).",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "cube": "parcel --target node --bundle-node-modules ./examples/cube.ts"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.2",
     "jest": "^25.4.0",
+    "parcel-bundler": "^1.12.4",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   }

@@ -30,7 +30,7 @@ npm test -- --watch
 ## Progress
 
 * [x] axis.go
-* [ ] box.go - **WIP**, depends on the missing class `Triangle`
+* [x] box.go - done but depends on the missing class `Triangle`
 * [x] common.go
 * [ ] cone.go
 * [ ] csg.go
@@ -45,11 +45,15 @@ npm test -- --watch
 * [x] path.go - missing `WriteTo*` methods, I think we should abstract it a little bit differently
 * [ ] plane.go
 * [x] ray.go
-* [ ] scene.go
+* [x] scene.go
 * [x] shape.go
 * [ ] sphere.go
 * [ ] stl.go
-* [ ] tree.go
+* [x] tree.go
 * [ ] triangle.go
 * [x] util.go
 * [x] vector.go
+
+The first SVG rendered by **linea**:
+
+![](./svg/cube.svg)
