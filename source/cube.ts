@@ -91,22 +91,20 @@ class Cube implements Shape {
     ]);
     return paths;
 
-    // TODO this is the original unused code
-    // Check what is it's purpose
-    /*
-    paths = paths[:0]
-    for i := 0; i <= 10; i++ {
-      p := float64(i) / 10
-      var x, y float64
-      x = x1 + (x2-x1)*p
-      y = y1 + (y2-y1)*p
-      paths = append(paths, path{{x, y1, z1}, {x, y1, z2}})
-      paths = append(paths, path{{x, y2, z1}, {x, y2, z2}})
-      paths = append(paths, path{{x1, y, z1}, {x1, y, z2}})
-      paths = append(paths, path{{x2, y, z1}, {x2, y, z2}})
-    }
-    return paths
-    */
+
+    // Code used to generate skyscrapers example
+    // const paths:Paths = new Paths();
+
+    // for (let i = 0; i <= 10; i++) {
+    //   const p = i / 10
+    //   const x = x1 + (x2 - x1) * p
+    //   const y = y1 + (y2 - y1) * p
+    //   paths.append(new Path([new Vector(x, y1, z1), new Vector(x, y1, z2)]));
+    //   paths.append(new Path([new Vector(x, y2, z1), new Vector(x, y2, z2)]));
+    //   paths.append(new Path([new Vector(x1, y, z1), new Vector(x1, y, z2)]));
+    //   paths.append(new Path([new Vector(x2, y, z1), new Vector(x2, y, z2)]));
+    // }
+    // return paths
   }
 }
 

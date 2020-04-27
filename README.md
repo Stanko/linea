@@ -77,3 +77,7 @@ node ./dist/cube.js > cube.svg
 The first SVG rendered by **linea**:
 
 ![](./svg/cube.svg)
+
+And the skyscrapers example (please note that this one uses code commented out in `source/cube.ts`):
+
+![](./svg/skyscrapers.svg)

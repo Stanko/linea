@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "cube": "parcel --target node --bundle-node-modules ./examples/cube.ts"
+    "cube": "parcel --target node --bundle-node-modules ./examples/cube.ts",
+    "skyscrapers": "parcel --target node --bundle-node-modules ./examples/skyscrapers.ts"
   },
   "repository": {
     "type": "git",
