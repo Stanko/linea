@@ -43,6 +43,13 @@ test('matrixBase scale', () => {
 // with the same name and "Matrix.mul"
 // Those are covered already, so there is no need to write more tests
 
+// TODO
+// Missing tests
+// * mulPosition
+// * mulPositionW
+// * mulDirection
+// * mulRay
+
 test('can create a matrix', () => {
   const matrix = new Matrix(
     1, 1, 1, 1,

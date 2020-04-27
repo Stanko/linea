@@ -42,11 +42,11 @@ npm test -- --watch
 * [x] matrix.go
 * [ ] mesh.go
 * [ ] obj.go
-* [ ] path.go
+* [x] path.go - missing `WriteTo*` methods, I think we should abstract it a little bit differently
 * [ ] plane.go
 * [x] ray.go
 * [ ] scene.go
-* [x] shape.go - depends on the missing class `Path`
+* [x] shape.go
 * [ ] sphere.go
 * [ ] stl.go
 * [ ] tree.go
