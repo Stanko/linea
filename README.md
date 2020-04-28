@@ -67,7 +67,7 @@ node ./dist/cube.js > cube.svg
 * [x] ray.go
 * [x] scene.go
 * [x] shape.go
-* [ ] sphere.go
+* [x] sphere.go
 * [ ] stl.go
 * [x] tree.go
 * [ ] triangle.go

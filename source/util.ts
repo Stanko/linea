@@ -27,3 +27,10 @@ export function median(items:number[]): number {
 export function parseFloats(numberAsStrings:string[]):number[] {
   return numberAsStrings.map(n => parseFloat(n));
 }
+
+export function random(min:number, max:number, returnInt:boolean = false) {
+  if (returnInt) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  return Math.random() * (max - min) + min;
+}
