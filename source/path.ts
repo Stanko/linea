@@ -219,7 +219,7 @@ export class Paths {
     let svg = `<svg width="${ width }" height="${ height }" version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">\n`;
     svg += `<g transform="translate(0, ${ height }) scale(1, -1)">\n`;
     svg += this.paths.map(path => path.toSVG()).join('\n');
-    svg += '</g>\n';
+    svg += '\n</g>\n';
     svg += '</svg>';
 
     return svg;
