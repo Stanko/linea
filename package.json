@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "cube": "parcel --target node --bundle-node-modules ./examples/cube.ts",
-    "skyscrapers": "parcel --target node --bundle-node-modules ./examples/skyscrapers.ts"
+    "examples": "parcel ./examples/index.html",
+    "skyscrapers": "parcel --target node --bundle-node-modules ./examples/skyscrapers.ts",
+    "skyscrapers-browser": "parcel ./examples/skyscrapers.html"
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,8 @@
     "parcel-bundler": "^1.12.4",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "node-sass": "^5.0.0"
   }
 }

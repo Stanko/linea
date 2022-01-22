@@ -1,10 +1,10 @@
-import Vector from "../source/vector";
-import Scene from "../source/scene";
-import Cube from "../source/cube";
+import Vector from "../../source/vector";
+import Scene from "../../source/scene";
+import Cube, { CubeType } from "../../source/cube";
 
 function main() {
   const scene = new Scene();
-  const	n = 15;
+  const	n = 9;
 
   for (let x = -n; x <=n; x++) {
     for (let y = -n; y <=n; y++) {
@@ -14,7 +14,7 @@ function main() {
 			const fx = x + dx * 0;
 			const fy = y + dy * 0;
 			const fz = Math.random() * 3 + 1;
-			const shape = new Cube(new Vector(fx - p, fy - p, 0), new Vector(fx + p, fy + p, fz));
+			const shape = new Cube(new Vector(fx - p, fy - p, 0), new Vector(fx + p, fy + p, fz), CubeType.StripedOuterSides);
 
       if (x == 2 && y == 1) {
 				continue
@@ -30,8 +30,12 @@ function main() {
 	const height = 1024.0
 	const paths = scene.render(eye, center, up, width, height, 100, 0.1, 100, 0.01);
 
-  console.log(paths.toSVG(width, height));
+  return paths.toSVG(width, height);
 }
 
 
-main();
+
+self.addEventListener('message', function(e) {
+  console.log('---- window message');
+  self.postMessage(main(), self);
+}, false);

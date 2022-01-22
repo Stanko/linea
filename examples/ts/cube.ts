@@ -1,6 +1,9 @@
-import Vector from "../source/vector";
-import Scene from "../source/scene";
-import Cube from "../source/cube";
+import Vector from "../../source/vector";
+import Scene from "../../source/scene";
+import Cube from "../../source/cube";
+import globalOptions from "../../source/global-options";
+
+globalOptions.checkForDuplicatesLines = true;
 
 function main() {
   // create a scene and add a single cube
@@ -24,13 +27,9 @@ function main() {
 	// compute 2D paths that depict the 3D scene
   const paths = scene.render(eye, center, up, width, height, fovY, zNear, zFar, step);
 
-	// render the paths in an image
-	// paths.writeToPNG("out.png", width, height);
-
-	// save the paths as an svg
-  // paths.writeToSVG("out.svg", width, height);
-
-  console.log(paths.toSVG(1000, 1000));
+  return paths.toSVG(1000, 1000);
 }
 
-main();
+const svg = main();
+
+document.querySelector('.image').innerHTML = svg;

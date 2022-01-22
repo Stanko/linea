@@ -93,7 +93,7 @@ class Vector {
   // Div
   div(v:Vector):Vector {
     if (v.x === 0 || v.y === 0 || v.z === 0) {
-      console.warn(`Dividing by zero, vector: ${ v }`)
+      // console.warn(`Dividing by zero, vector: ${ v }`)
     }
 
     return new Vector(this.x / v.x, this.y / v.y, this.z / v.z);

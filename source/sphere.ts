@@ -148,11 +148,14 @@ class Sphere implements Shape {
   private pathsDots():Paths {
     const paths = new Paths();
 
-    for (let i = 0; i < this.radius * 20000; i++) {
+    for (let i = 0; i < this.radius * 6000; i++) {
       let v1 = Vector.randomUnitVector();
       const v2 = v1.mulScalar(this.radius).add(v1.mulScalar(0.005)).add(this.center);
       v1 = v1.mulScalar(this.radius).add(this.center);
-      paths.append(new Path([v1, v2]));
+
+      const p = new Path([v1, v2]);
+      p.keepIt = true;
+      paths.append(p);
     }
 
     return paths

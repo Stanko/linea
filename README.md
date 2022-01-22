@@ -52,7 +52,7 @@ node ./dist/cube.js > cube.svg
 * [x] axis.go
 * [x] box.go - done but depends on the missing class `Triangle`
 * [x] common.go
-* [ ] cone.go
+* [ ] cone.go - WIP
 * [ ] csg.go
 * [x] cube.go
 * [ ] cylinder.go

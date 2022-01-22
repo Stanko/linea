@@ -5,15 +5,22 @@ import Box from "./box";
 import Path, { Paths } from "./path";
 import Shape from "./shape";
 
+export enum CubeType {
+  Outlines = 0,
+  StripedOuterSides,
+}
+
 class Cube implements Shape {
   min: Vector;
   max: Vector;
   box: Box;
+  cubeType: CubeType;
 
-  constructor(min:Vector, max:Vector) {
+  constructor(min:Vector, max:Vector, cubeType:CubeType = CubeType.Outlines) {
     this.min = min;
     this.max = max;
     this.box = new Box(min, max);
+    this.cubeType = cubeType;
   }
 
   // Compile
@@ -68,6 +75,10 @@ class Cube implements Shape {
 
   // Paths
   paths():Paths {
+    if (this.cubeType === CubeType.StripedOuterSides) {
+      return this.pathsStripedOuterSides();
+    }
+
     const x1 = this.min.x;
     const y1 = this.min.y;
     const z1 = this.min.z;
@@ -89,22 +100,32 @@ class Cube implements Shape {
       new Path([new Vector(x2, y1, z2), new Vector(x2, y2, z2)]),
       new Path([new Vector(x2, y2, z1), new Vector(x2, y2, z2)]),
     ]);
-    return paths;
 
+    return paths;
+  }
+
+  private pathsStripedOuterSides():Paths {
+    const x1 = this.min.x;
+    const y1 = this.min.y;
+    const z1 = this.min.z;
+    const x2 = this.max.x;
+    const y2 = this.max.y;
+    const z2 = this.max.z;
 
     // Code used to generate skyscrapers example
-    // const paths:Paths = new Paths();
+    const paths:Paths = new Paths();
 
-    // for (let i = 0; i <= 10; i++) {
-    //   const p = i / 10
-    //   const x = x1 + (x2 - x1) * p
-    //   const y = y1 + (y2 - y1) * p
-    //   paths.append(new Path([new Vector(x, y1, z1), new Vector(x, y1, z2)]));
-    //   paths.append(new Path([new Vector(x, y2, z1), new Vector(x, y2, z2)]));
-    //   paths.append(new Path([new Vector(x1, y, z1), new Vector(x1, y, z2)]));
-    //   paths.append(new Path([new Vector(x2, y, z1), new Vector(x2, y, z2)]));
-    // }
-    // return paths
+    for (let i = 0; i <= 10; i++) {
+      const p = i / 10;
+      const x = x1 + (x2 - x1) * p;
+      const y = y1 + (y2 - y1) * p;
+      paths.append(new Path([new Vector(x, y1, z1), new Vector(x, y1, z2)]));
+      paths.append(new Path([new Vector(x, y2, z1), new Vector(x, y2, z2)]));
+      paths.append(new Path([new Vector(x1, y, z1), new Vector(x1, y, z2)]));
+      paths.append(new Path([new Vector(x2, y, z1), new Vector(x2, y, z2)]));
+    }
+
+    return paths;
   }
 }
 

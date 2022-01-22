@@ -2,12 +2,15 @@ import Vector from "./vector";
 import Box from "./box";
 import Matrix from "./matrix";
 import ClipFilter from "./filter";
+import globalOptions from "./global-options";
 
 class Path {
   points: Vector[];
+  keepIt: boolean = false;
 
-  constructor(points:Vector[] = []) {
+  constructor(points:Vector[] = [], keepIt:boolean = false) {
     this.points = points;
+    this.keepIt = keepIt;
   }
 
   append(...newPoints:Vector[]) {
@@ -36,12 +39,12 @@ class Path {
       return matrix.mulPosition(p);
     });
 
-    return new Path(points);
+    return new Path(points, this.keepIt);
   }
 
   // Chop
   chop(step:number):Path {
-    const result = new Path();
+    const result = new Path([], this.keepIt);
 
     for (let i = 0; i < this.points.length - 1; i++) {
       const a = this.points[i];
@@ -68,7 +71,7 @@ class Path {
   // Filter
   filter(f:ClipFilter):Paths {
     const result = new Paths();
-    let path = new Path();
+    let path = new Path([], this.keepIt);
 
     this.points.forEach(point => {
       const { vector, ok } = f.filter(point);
@@ -82,7 +85,7 @@ class Path {
         if (path.points.length > 1) {
           result.append(path)
         }
-        path = new Path();
+        path = new Path([], this.keepIt);
       }
     });
 
@@ -96,7 +99,7 @@ class Path {
   // Simplify
   simplify(threshold:number):Path {
     if (this.points.length < 3) {
-      return new Path([...this.points]);
+      return new Path([...this.points], this.keepIt);
     }
 
     const a = this.points[0];
@@ -114,16 +117,16 @@ class Path {
     }
 
     if (distance > threshold) {
-      const r1 = new Path(this.points.slice(0, index + 1)).simplify(threshold);
-      const r2 = new Path(this.points.slice(index)).simplify(threshold);
+      const r1 = new Path(this.points.slice(0, index + 1), this.keepIt).simplify(threshold);
+      const r2 = new Path(this.points.slice(index), this.keepIt).simplify(threshold);
 
       return new Path([
         ...r1.points.slice(0, r1.points.length - 1),
         ...r2.points,
-      ]);
+      ], this.keepIt);
     }
 
-    return new Path([a, b]);
+    return new Path([a, b], this.keepIt);
   }
 
   toString() {
@@ -134,11 +137,20 @@ class Path {
 
   // ToSVG
   toSVG():string {
+    // Remove lines that are shorter than the globally set threshold
+    if (globalOptions.pathLengthThreshold > 0 && this.points.length === 2) {
+      const d = this.points[0].distance(this.points[1]);
+
+      if (!this.keepIt && d < globalOptions.pathLengthThreshold) {
+        return '';
+      }
+    }
+
     const coords = this.points.map(p => {
-      return `${ p.x } ${ p.y }`;
+      return `${ p.x.toFixed(3) } ${ p.y.toFixed(3) }`;
     }).join(' ');
 
-    return `<polyline stroke="black" fill="none" points="${ coords }" />`;
+    return `<polyline points="${ coords }" />`;
   }
 }
 
@@ -216,8 +228,8 @@ export class Paths {
 
   // ToSvg
   toSVG(width:number, height:number):string {
-    let svg = `<svg width="${ width }" height="${ height }" version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">\n`;
-    svg += `<g transform="translate(0, ${ height }) scale(1, -1)">\n`;
+    let svg = `<svg viewBox="0 0 ${ width } ${ height }" version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">\n`;
+    svg += `<g transform="translate(0, ${ height }) scale(1, -1)" stroke="black" fill="none" stroke-width="${ globalOptions.strokeWidth }" stroke-linecap="round">\n`;
     svg += this.paths.map(path => path.toSVG()).join('\n');
     svg += '\n</g>\n';
     svg += '</svg>';

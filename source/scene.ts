@@ -91,7 +91,7 @@ class Scene {
     matrix = matrixBase.translate(new Vector(1, 1, 0)).scale(new Vector(width / 2, height / 2, 0));
     paths = paths.transform(matrix);
 
-    return paths
+    return paths;
   }
 
 }
