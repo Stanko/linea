@@ -6,7 +6,7 @@ The name of the port is inspired by the Italian cartoon from the 70s, [La Linea]
 
 ## Setup
 
-Project was made using node 12. We suggest using [nvm](https://github.com/nvm-sh/nvm). If you have nvm installed, just run `nvm use` in the root dir, to switch to version 12 (you need to install it first).
+Project was made using node 12. I'm usually using [nvm](https://github.com/nvm-sh/nvm). If you have nvm installed, just run `nvm use` in the root dir, to switch to version 12 (you need to install it first).
 
 Then install dependencies
 
