@@ -1,6 +1,8 @@
 import Vector from "./vector";
 
-test('can create a vector', () => {
+import { vi, expect, test } from "vitest";
+
+test("can create a vector", () => {
   const vector = new Vector(1, 1, 1);
 
   expect(vector).toBeDefined();
@@ -9,8 +11,7 @@ test('can create a vector', () => {
   expect(vector.z).toBeDefined();
 });
 
-
-test('can create random vector and it is normalized', () => {
+test("can create random vector and it is normalized", () => {
   const randomVector = Vector.randomUnitVector();
 
   expect(randomVector).toBeDefined();
@@ -19,7 +20,7 @@ test('can create random vector and it is normalized', () => {
   expect(randomVector.z).toBeLessThan(1);
 });
 
-test('vector length', () => {
+test("vector length", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 1, 1);
   const vector3 = new Vector(3, 4, 5);
@@ -29,7 +30,7 @@ test('vector length', () => {
   expect(vector3.length()).toEqual(Math.sqrt(9 + 16 + 25));
 });
 
-test('distance between vectors', () => {
+test("distance between vectors", () => {
   const vector1 = new Vector(1, 1, 1);
   const vector2 = new Vector(2, 2, 2);
 
@@ -42,7 +43,7 @@ test('distance between vectors', () => {
   expect(vector3.distance(vector4)).toEqual(3);
 });
 
-test('vector length squared', () => {
+test("vector length squared", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 1, 1);
   const vector3 = new Vector(3, 4, 5);
@@ -52,7 +53,7 @@ test('vector length squared', () => {
   expect(vector3.lengthSquared()).toEqual(9 + 16 + 25);
 });
 
-test('distance squared between vectors', () => {
+test("distance squared between vectors", () => {
   const vector1 = new Vector(1, 1, 1);
   const vector2 = new Vector(2, 2, 2);
 
@@ -65,7 +66,7 @@ test('distance squared between vectors', () => {
   expect(vector3.distanceSquared(vector4)).toEqual(9);
 });
 
-test('vector dot product', () => {
+test("vector dot product", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const vector3 = new Vector(1, 5, 7);
@@ -74,7 +75,7 @@ test('vector dot product', () => {
   expect(vector2.dot(vector3)).toEqual(32);
 });
 
-test('vector cross product', () => {
+test("vector cross product", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const vector3 = new Vector(1, 5, 7);
@@ -90,14 +91,13 @@ test('vector cross product', () => {
   expect(cross2.z).toEqual(3);
 });
 
-
-test('normalize vector', () => {
+test("normalize vector", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const vector3 = new Vector(1, 5, 7);
 
-  global.console.warn = jest.fn()
-  const warnSpy = jest.spyOn(global.console, 'warn');
+  console.log = vi.fn();
+  const warnSpy = vi.spyOn(console, "warn");
 
   const normalized1 = vector1.normalize();
   expect(warnSpy).toHaveBeenCalled();
@@ -118,7 +118,7 @@ test('normalize vector', () => {
   expect(normalized3.z).toEqual(vector3.z / d3);
 });
 
-test('adding vectors', () => {
+test("adding vectors", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const vector3 = new Vector(1, 5, 7);
@@ -134,7 +134,7 @@ test('adding vectors', () => {
   expect(result2.z).toEqual(10);
 });
 
-test('subtracting vectors', () => {
+test("subtracting vectors", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const vector3 = new Vector(1, 5, 7);
@@ -150,7 +150,7 @@ test('subtracting vectors', () => {
   expect(result2.z).toEqual(-4);
 });
 
-test('multiplying vectors', () => {
+test("multiplying vectors", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const vector3 = new Vector(1, 5, 7);
@@ -166,7 +166,7 @@ test('multiplying vectors', () => {
   expect(result2.z).toEqual(21);
 });
 
-test('dividing vectors', () => {
+test("dividing vectors", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const vector3 = new Vector(1, 5, 7);
@@ -182,7 +182,7 @@ test('dividing vectors', () => {
   expect(result2.z).toEqual(3 / 7);
 });
 
-test('adding scalar', () => {
+test("adding scalar", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const n = 5;
@@ -198,8 +198,7 @@ test('adding scalar', () => {
   expect(result2.z).toEqual(8);
 });
 
-
-test('subtracting scalar', () => {
+test("subtracting scalar", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const n = 5;
@@ -215,7 +214,7 @@ test('subtracting scalar', () => {
   expect(result2.z).toEqual(-2);
 });
 
-test('multiply by scalar', () => {
+test("multiply by scalar", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const n = 5;
@@ -231,7 +230,7 @@ test('multiply by scalar', () => {
   expect(result2.z).toEqual(15);
 });
 
-test('diving by scalar', () => {
+test("diving by scalar", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 3);
   const n = 5;
@@ -247,7 +246,7 @@ test('diving by scalar', () => {
   expect(result2.z).toEqual(3 / 5);
 });
 
-test('min vector', () => {
+test("min vector", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 2);
   const vector3 = new Vector(-5, -10, 3);
@@ -263,7 +262,7 @@ test('min vector', () => {
   expect(result2.z).toEqual(2);
 });
 
-test('max vector', () => {
+test("max vector", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 2, 2);
   const vector3 = new Vector(-5, -10, 3);
@@ -279,7 +278,7 @@ test('max vector', () => {
   expect(result2.z).toEqual(3);
 });
 
-test('min axis', () => {
+test("min axis", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(5, 2, 3);
   const vector3 = new Vector(3, 2, 1);
@@ -300,7 +299,7 @@ test('min axis', () => {
   expect(result3.z).toEqual(1);
 });
 
-test('min component', () => {
+test("min component", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(5, 2, 3);
   const vector3 = new Vector(3, -10, 1);
@@ -310,7 +309,7 @@ test('min component', () => {
   expect(vector3.minComponent()).toEqual(-10);
 });
 
-test('segment distance', () => {
+test("segment distance", () => {
   const vector1 = new Vector(0, 0, 0);
   const vector2 = new Vector(1, 0, 0);
   const vector3 = new Vector(0, 1, 0);

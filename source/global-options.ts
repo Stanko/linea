@@ -1,9 +1,10 @@
 type TGlobalOptions = {
-  pathLengthThreshold: number,
-  strokeWidth: number,
-}
+  pathLengthThreshold: number;
+  strokeWidth: number;
+  checkForDuplicatesLines?: boolean;
+};
 
-const globalOptions:TGlobalOptions = {
+const globalOptions: TGlobalOptions = {
   pathLengthThreshold: 0,
   strokeWidth: 1,
 };

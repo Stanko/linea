@@ -4,11 +4,9 @@
   "description": "This is an attempt to port [Michael Fogleman's ln](https://github.com/fogleman/ln), 3d line engine to JavaScript (well, TypeScript).",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "cube": "parcel --target node --bundle-node-modules ./examples/cube.ts",
-    "examples": "parcel ./examples/index.html",
-    "skyscrapers": "parcel --target node --bundle-node-modules ./examples/skyscrapers.ts",
-    "skyscrapers-browser": "parcel ./examples/skyscrapers.html"
+    "test": "vitest",
+    "start": "vite",
+    "build": "rm -rf ./docs && vite build"
   },
   "repository": {
     "type": "git",
@@ -20,16 +18,11 @@
     "url": "https://github.com/Stanko/linea/issues"
   },
   "homepage": "https://github.com/Stanko/linea#readme",
-  "devDependencies": {
-    "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.2",
-    "jest": "^25.4.0",
-    "parcel-bundler": "^1.12.4",
-    "sass": "^1.49.0",
-    "ts-jest": "^25.4.0",
-    "typescript": "^3.8.3"
-  },
   "dependencies": {
-    "node-sass": "^7.0.3"
+    "18": "^0.0.0",
+    "@types/node": "^18.11.19",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vitest": "^0.28.4"
   }
 }

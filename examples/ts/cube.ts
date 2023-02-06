@@ -11,25 +11,35 @@ function main() {
   const cube = new Cube(new Vector(-1, -1, -1), new Vector(1, 1, 1));
   scene.add(cube);
 
-	// define camera parameters
-	const eye = new Vector(4, 3, 2); // camera position
-	const center = new Vector(0, 0, 0); // camera looks at
-	const up = new Vector(0, 0, 1); // up direction
+  // define camera parameters
+  const eye = new Vector(4, 3, 2); // camera position
+  const center = new Vector(0, 0, 0); // camera looks at
+  const up = new Vector(0, 0, 1); // up direction
 
-	// define rendering parameters
-	const width = 1024.0; // rendered width
-	const height = 1024.0; // rendered height
-	const fovY = 50.0; // vertical field of view, degrees
-	const zNear = 0.1; // near z plane
-	const zFar = 10.0; // far z plane
-	const step = 0.01; // how finely to chop the paths for visibility testing
+  // define rendering parameters
+  const width = 1024.0; // rendered width
+  const height = 1024.0; // rendered height
+  const fovY = 50.0; // vertical field of view, degrees
+  const zNear = 0.1; // near z plane
+  const zFar = 10.0; // far z plane
+  const step = 0.01; // how finely to chop the paths for visibility testing
 
-	// compute 2D paths that depict the 3D scene
-  const paths = scene.render(eye, center, up, width, height, fovY, zNear, zFar, step);
+  // compute 2D paths that depict the 3D scene
+  const paths = scene.render(
+    eye,
+    center,
+    up,
+    width,
+    height,
+    fovY,
+    zNear,
+    zFar,
+    step
+  );
 
   return paths.toSVG(1000, 1000);
 }
 
 const svg = main();
 
-document.querySelector('.image').innerHTML = svg;
+(document.querySelector(".image") as HTMLDialogElement).innerHTML = svg;
