@@ -2,19 +2,19 @@
 
 Demo: [https://muffinman.io/linea](https://muffinman.io/linea)
 
-I don't really maintain this project. I used it to generate and plot a couple of drawings:
+This is an attempt to port [Michael Fogleman's ln](https://github.com/fogleman/ln), 3d line engine to JavaScript (well, TypeScript).
+
+I used it to generate and plot a couple of drawings:
 
 - [Belgrade](https://muffinman.io/art/belgrade/)
 - [Galaxy (black version)](https://muffinman.io/art/galaxy-black/)
 - [Galaxy (white version)](https://muffinman.io/art/galaxy-white/)
 
-You might want to check similar projects:
+I'm not really maintaining it anymore, so you might want to check similar projects:
 
 - https://github.com/fogleman/ln - original (in go) that I tried to port to javascript
 - https://github.com/aweary/ln.js - more complete js port
 - https://github.com/abey79/lines - python version
-
-This is an attempt to port [Michael Fogleman's ln](https://github.com/fogleman/ln), 3d line engine to JavaScript (well, TypeScript).
 
 The name of the port is inspired by the Italian cartoon from the 70s, [La Linea](<https://en.wikipedia.org/wiki/La_Linea_(TV_series)>).
 
@@ -28,7 +28,7 @@ npm install
 npm start
 ```
 
-visit http://localhost:1234/
+Then visit http://localhost:1234/
 
 ## Tests
 
